@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Showray</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="album-showcase">
+            <div class="cover">
+                <img id="album-cover" src="" alt="Album Cover" />
+            </div>
+            <div class="album-info">
+                <h1 id="album-name"></h1>
+                <h2 id="artist-name"></h2>
+                <div class="button-row">
+                    <button class="br-button" onclick="openCopyPopup()">
+                        <i class="fas fa-link"></i> Share
+                    </button>
+                </div>
+                <div class="streaming-services" id="streaming-services"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>This website is made using Showray, an open-source free website to create music release pages.<br><a href="https://github.com/sippedaway/Showray/">Create your own release page</a></p>
+        </div>
+    </div>
+
+    <div class="copy-overlay" id="copy-overlay" onclick="closeCopyPopup()"></div>
+
+    <div class="copy-popup" id="copy-popup">
+        <h2>Share this page</h2>
+        <p id="copy-popup-p">Copy this link to share this release:</p>
+        <input type="text" id="copy-url" readonly>
+        <button onclick="copyToClipboard()">Copy</button>
+        <button class="close-popup" onclick="closeCopyPopup()">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

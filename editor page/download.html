@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Showcase</title>
+    <style>
+        @font-face {
+  font-family: 'Neue Haas Grotesk';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./fonts/Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Roman.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Neue Haas Grotesk';
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+  backdrop-filter: blur(100px);
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+#body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  color: #33CCFF
+}
+
+.container {
+  background: none;
+  border-radius: 12px;
+  margin-top: 2%;
+  max-width: 850px;
+  width: 80vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.footer {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+.album-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cover img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cover img:hover {
+  scale: 1.02;
+  cursor: pointer;
+}
+
+.album-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.album-info h1 {
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.album-info h2 {
+  font-size: 1.2rem;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  gap: 15px;
+}
+
+.br-button {
+  font-family: 'Neue Haas Grotesk';
+  text-overflow: hidden;
+  width: auto;
+  background: gainsboro;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.br-button:hover {
+  scale: 1.1;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.br-button i {
+  font-size: 13px;
+  color: gray;
+  margin-right: 8px;
+}
+
+.copy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
+}
+
+.copy-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  display: none;
+  text-align: center;
+  width: 50vw;
+  max-width: 600px;
+  min-height: 250px;
+  z-index: 1000;
+}
+
+#copy-popup-p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.copy-popup input {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.copy-popup button {
+  background: #33CCFF;
+  font-family: 'Neue Haas Grotesk';
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.copy-popup button:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.copy-popup .close-popup {
+  background: gray;
+}
+
+.streaming-services {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  width: 70vw;
+  max-width: 800px;
+  height: auto;
+  border-radius: 15px;
+  background: white;
+  align-items: center;
+}
+
+.streaming-s-container {
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.streaming-s-container:hover {
+  background-color: #F5F5F5;
+  scale: 1.03;
+}
+
+.streaming-s-title {
+  margin-left: 10px;
+}
+
+.streaming-logo {
+  width: 110px;
+  height: auto;
+}
+
+.streaming-s-buttons {
+  width: 20vw;
+  display: flex;
+}
+
+.streaming-s-button {
+  font-family: 'Neue Haas Grotesk';
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  background: gainsboro;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.streaming-s-button:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.streaming-s-button i {
+  margin: 0;
+  font-size: 13px;
+  color: gray;
+  margin-right: 8px;
+}
+
+.streaming-s-circle {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streaming-s-circle i {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  align-items: center;
+  width: 95%;
+  height: 1px;
+  background: gainsboro;
+}
+
+@media screen and (max-width: 750px) {
+  .streaming-s-container {
+      justify-content: unset;
+      gap: 40%;
+  }
+
+  .copy-popup {
+      width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .streaming-s-container {
+      gap: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+      width: 100vw;
+  }
+
+  .album-info {
+      width: 100vw;
+      align-items: center;
+  }
+
+  .streaming-services {
+      width: 90vw;
+  }
+
+  .streaming-s-container {
+      gap: 70px;
+  }
+
+  .streaming-s-buttons {
+      width: 50vw;
+  }
+
+  .streaming-s-button {
+      font-size: 14px;
+      text-overflow: clip;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .streaming-logo {
+      width: 90px;
+  }
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="album-showcase">
+            <div class="cover">
+                <img id="album-cover" src="" alt="Album Cover" />
+            </div>
+            <div class="album-info">
+                <h1 id="album-name"></h1>
+                <h2 id="artist-name"></h2>
+                <div class="button-row">
+                    <button class="br-button" onclick="openCopyPopup()">
+                        <i class="fas fa-link"></i> Share
+                    </button>
+                </div>
+                <div class="streaming-services" id="streaming-services"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>This website is made using Showcase, an open-source free website to create music release pages.<br><a href="https://github.com/sippedaway/Showcase/">Create your own release page</a></p>
+        </div>
+    </div>
+
+    <div class="copy-overlay" id="copy-overlay" onclick="closeCopyPopup()"></div>
+
+    <div class="copy-popup" id="copy-popup">
+        <h2>Share this page</h2>
+        <p id="copy-popup-p">Copy this link to share this release:</p>
+        <input type="text" id="copy-url" readonly>
+        <button onclick="copyToClipboard()">Copy</button>
+        <button class="close-popup" onclick="closeCopyPopup()">Close</button>
+    </div>
+
+    <script>
+        function renderData() {
+  const coverImg = document.getElementById("album-cover");
+  if (data.cover) {
+      coverImg.src = data.cover;
+      coverImg.alt = `${data.album} Cover`;
+
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = data.cover;
+      document.head.appendChild(link);
+  }
+
+  if (data.album) document.getElementById("album-name").textContent = data.album;
+  if (data.artist) document.getElementById("artist-name").textContent = data.artist;
+
+  if (data.artist && data.album) {
+      document.title = `${data.artist} - ${data.album}`;
+  }
+
+  const body = document.body;
+  if (data.cover) {
+      body.style.backgroundImage = `url(${data.cover})`;
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = 'center';
+      body.style.backgroundAttachment = 'fixed';
+
+      let overlay = document.getElementById("background-overlay");
+      if (!overlay) {
+          overlay = document.createElement("div");
+          overlay.id = "body-overlay";
+          body.appendChild(overlay);
+      }
+
+      getImageBrightness(data.cover, (brightness) => {
+          const albumName = document.getElementById("album-name");
+          albumName.style.color = brightness > 127 ? "#000" : "#fff";
+      });
+  }
+
+  const servicesContainer = document.getElementById("streaming-services");
+  data.services.forEach((service, index) => {
+      const ss = document.createElement('div');
+      ss.classList.add('streaming-s-container');
+      ss.addEventListener("click", () => {
+          window.open(`${service.link}`, '_blank');
+      });
+
+      let serviceHTML = '';
+
+      if (service.image) {
+          serviceHTML += `
+      <div class="streaming-s-title">
+        <img src="${service.image}" alt="${service.name || 'Service'}" class="streaming-logo">
+      </div>
+    `;
+      }
+
+      if (service.link && service.button) {
+          serviceHTML += `
+      <div class="streaming-s-buttons">
+        <button onclick="event.stopPropagation(); window.open('${service.link}', '_blank');" class="streaming-s-button">
+          ${service.icon ? `<i class="${service.icon}"></i>` : ''} ${service.button}
+        </button>
+        ${service.button2 && service.button2_link ? `
+          <button onclick="event.stopPropagation(); window.open('${service.button2_link}', '_blank');" class="streaming-s-button streaming-s-circle">
+            ${service.button2_icon ? `<i class="${service.button2_icon}"></i>` : ''}
+          </button>
+        ` : ''}
+      </div>
+    `;
+      }
+
+      if (serviceHTML) {
+          ss.innerHTML = serviceHTML;
+          servicesContainer.appendChild(ss);
+          if (index < data.services.length - 1) {
+              const divider = document.createElement('hr');
+              servicesContainer.appendChild(divider);
+          }
+      }
+  });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderData();
+})
+
+function getImageBrightness(imageSrc, callback) {
+  const img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.src = imageSrc;
+
+  img.onload = function() {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let totalBrightness = 0;
+      const pixels = imageData.data.length / 4;
+
+      for (let i = 0; i < imageData.data.length; i += 4) {
+          const r = imageData.data[i];
+          const g = imageData.data[i + 1];
+          const b = imageData.data[i + 2];
+
+          const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+          totalBrightness += brightness;
+      }
+
+      const avgBrightness = totalBrightness / pixels;
+      callback(avgBrightness);
+  };
+}
+
+function openCopyPopup() {
+  const popup = document.getElementById("copy-popup");
+  const overlay = document.getElementById("copy-overlay");
+  const urlInput = document.getElementById("copy-url");
+
+  document.getElementById("copy-popup-p").textContent = 'Copy this link to share this release:';
+
+  urlInput.value = window.location.href;
+  popup.style.display = "block";
+  overlay.style.display = "block";
+
+  document.body.classList.add("no-scroll");
+}
+
+function closeCopyPopup() {
+  document.getElementById("copy-popup").style.display = "none";
+  document.getElementById("copy-overlay").style.display = "none";
+
+  document.body.classList.remove("no-scroll");
+}
+
+function copyToClipboard() {
+  const urlInput = document.getElementById("copy-url");
+  document.getElementById("copy-popup-p").textContent = 'Link copied!';
+  urlInput.select();
+  document.execCommand("copy");
+}
+
+    </script>
+</body>
+
+</html>

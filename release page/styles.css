@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Inter';
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+  backdrop-filter: blur(100px);
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+#body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
+
+a {
+  color: #33CCFF
+}
+
+.container {
+  background: none;
+  border-radius: 12px;
+  margin-top: 2%;
+  max-width: 850px;
+  width: 80vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.footer {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+.album-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cover img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cover img:hover {
+  scale: 1.02;
+  cursor: pointer;
+}
+
+.album-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.album-info h1 {
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.album-info h2 {
+  font-size: 1.2rem;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  gap: 15px;
+}
+
+.br-button {
+  font-family: 'Inter';
+  text-overflow: hidden;
+  width: auto;
+  background: gainsboro;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.br-button:hover {
+  scale: 1.1;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.br-button i {
+  font-size: 13px;
+  color: gray;
+  margin-right: 8px;
+}
+
+.copy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
+}
+
+.copy-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  display: none;
+  text-align: center;
+  width: 50vw;
+  max-width: 600px;
+  min-height: 250px;
+  z-index: 1000;
+}
+
+#copy-popup-p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.copy-popup input {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.copy-popup button {
+  background: #33CCFF;
+  font-family: 'Inter';
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.copy-popup button:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.copy-popup .close-popup {
+  background: gray;
+}
+
+.streaming-services {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  width: 70vw;
+  max-width: 800px;
+  height: auto;
+  border-radius: 15px;
+  background: white;
+  align-items: center;
+}
+
+.streaming-s-container {
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.streaming-s-container:hover {
+  background-color: #F5F5F5;
+  scale: 1.03;
+}
+
+.streaming-s-title {
+  margin-left: 10px;
+}
+
+.streaming-logo {
+  width: 110px;
+  height: auto;
+}
+
+.streaming-s-buttons {
+  width: 20vw;
+  display: flex;
+}
+
+.streaming-s-button {
+  font-family: 'Inter';
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  background: gainsboro;
+  border-radius: 15px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.streaming-s-button:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 1);
+}
+
+.streaming-s-button i {
+  margin: 0;
+  font-size: 13px;
+  color: gray;
+  margin-right: 8px;
+}
+
+.streaming-s-circle {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streaming-s-circle i {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  align-items: center;
+  width: 95%;
+  height: 1px;
+  background: gainsboro;
+}
+
+@media screen and (max-width: 750px) {
+  .streaming-s-container {
+      justify-content: unset;
+      gap: 40%;
+  }
+
+  .copy-popup {
+      width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .streaming-s-container {
+      gap: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+      width: 100vw;
+  }
+
+  .album-info {
+      width: 100vw;
+      align-items: center;
+  }
+
+  .streaming-services {
+      width: 90vw;
+  }
+
+  .streaming-s-container {
+      gap: 70px;
+  }
+
+  .streaming-s-buttons {
+      width: 50vw;
+  }
+
+  .streaming-s-button {
+      font-size: 14px;
+      text-overflow: clip;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .streaming-logo {
+      width: 90px;
+  }
+}

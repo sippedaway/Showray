@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free music pages - Showray</title>
+    <link rel="icon" href="./assets/Showray/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="cursor" id="cursor"></div>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="./assets/Showray/SR_Black.png" alt="Showray" />
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="navbar-right">
+            <button class="nav-get-started" id="ngs">Get Started</button>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="home-content">
+            <div class="home-left">
+                <h1>Create a music release page</h1>
+                <p>Promote your music for absolutely free and host it anywhere you want</p>
+                <button id="get-started-btn">Get started</button>
+            </div>
+            <div class="home-right">
+                <img src="./assets/home_preview.png" class="home-preview" alt="Home Preview">
+            </div>
+        </div>
+
+        <div class="icons">
+            <h4 style="color: #525252">ADD ANY STREAMING SERVICE</h4>
+            <div class="icons-track" id="icons-track">
+            </div>
+        </div>
+    </section>
+
+    <section id="edit">
+        <div class="editor-container">
+            <div class="editor-left">
+                <h2>Create a Release Page</h2>
+                <form id="release-form">
+                    <div class="form-step" id="step-1">
+                        <h3>Release Details</h3>
+                        <h4 style="margin: 0">Cover</h4>
+                        <label for="cover-file" class="default-service-item" style="margin-bottom: 10px;">Browse image</label>
+                        <input type="text" id="cover" placeholder="Enter cover image URL" />
+                        <input type="file" id="cover-file" class="custom-file-input" accept="image/*" />
+
+                        <label for="release-name">Name</label>
+                        <input type="text" id="release-name" placeholder="Enter release name" />
+
+                        <label for="artist-name">Artist names</label>
+                        <input type="text" id="artist-name" placeholder="Enter artist names" />
+
+                        <div class="step-navigation">
+                            <button type="button" id="next-step-1" class="next-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-2" style="display: none;">
+                        <h3>Streaming Services</h3>
+                        <p>You can drag and drop selected streaming services to change the order</p>
+                        <div id="default-services">
+                        </div>
+                        <button type="button" class="default-service-item" style="background-color: #bfdeff;" id="add-custom-service-btn">+ Add streaming service</button>
+                        <fieldset style="margin-top: 40px; border: none;">
+                            <legend><strong>Selected Streaming Services</strong></legend>
+                            <div id="streaming-services-list">
+                            </div>
+                        </fieldset>
+                        <div class="step-navigation">
+                            <button type="button" id="prev-step-2" class="prev-btn">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" id="next-step-2" class="next-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-3" style="display: none;">
+                        <h3>Page Options</h3>
+                        <label for="share-toggle">Include Share Button?</label>
+                        <select id="share-toggle">
+                            <option value="yes" selected>Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <small>A Share button lets users copy the URL of your release page.</small>
+
+                        <label for="footer-toggle" style="margin-top: 15px;">Include Footer?</label>
+                        <select id="footer-toggle">
+                            <option value="yes" selected>Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <small>Leave a footer saying this page is made using Showray. This helps other people find and use Showcase and helps me out a lot. However, the choice is up to you!</small>
+                        <div class="step-navigation">
+                            <button type="button" id="prev-step-3" class="prev-btn">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" id="next-step-3" class="next-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-4" style="display: none;">
+                        <h3>Download your page</h3>
+                        <p>Click the button below to download your website as an .HTML file!</p>
+                        <button type="button" class="default-service-item" id="download-json-btn">Download website</button>
+                        <p style="margin-top: 10%;"><b>What is this?</b><br>You can download an HTML file which has the entire release page.</p>
+                        <p><b>Where do I put it?</b><br>You can host this release page anywhere! Your own website, your own domain, in any website editor, etc.!</p>
+                        <p><b>Can I edit it?</b><br>Sure. It's your website now, no attribution or credits to Showray are required, do whatever you like!</p>
+                        <a onclick="goto('faq');" style="margin-top: 4%; color: blue; cursor: pointer;">I have more questions</a>
+
+                        <div class="step-navigation">
+                            <button type="button" id="prev-step-4" class="prev-btn">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="editor-right">
+                <h2>Preview</h2>
+                <p>The preview might be different to the actual release page</p>
+                <div id="preview" class="container">
+                    <div class="album-showcase">
+                        <div class="cover">
+                            <img id="preview-album-cover" src="./assets/Placeholder.png" alt="Album Cover" />
+                        </div>
+                        <div class="album-info">
+                            <h1 id="preview-album-name">Album Name</h1>
+                            <h2 id="preview-artist-name">Artist Name</h2>
+                            <div class="button-row">
+                                <button class="br-button" id="preview-share-btn" style="display: none;">
+                                    <i class="fas fa-link"></i> Share
+                                </button>
+                            </div>
+                            <div class="streaming-services" id="preview-streaming-services">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer" id="preview-footer" style="display: none;">
+                        <p>This website is made using Showray, an open-source free website to create music release pages.<br>
+                            <a href="https://github.com/sippedaway/Showray/">Create your own release page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="pricing">
+        <h1 style="margin-bottom: 15px;">Pricing</h1>
+        <p>Remember - no attribution or credits required. Do whatever you want.</p>
+
+        <div class="pr-divs">
+            <div class="pr-item">
+                <div class="pr-item-header">
+                    <h1>Free</h1>
+                </div>
+                <ul>
+                    <li>No account</li>
+                    <li>Create unlimited pages</li>
+                    <li>Host the website yourself</li>
+                    <li>No limits</li>
+                </ul>
+
+                <button style="margin-top: 15%;" id="get-started-btn" class="gsb" onclick='goto(`edit`)'>Create a page now</button>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-item-header pr-i-h-dc">
+                    <h1>Want more?</h1>
+                </div>
+                <p><a href="https://ko-fi.com/sipped">Support me on Ko-Fi</a> to get any custom changes, features, etc.</p>
+
+                <button style="margin-top: 24%;" id="get-started-btn" class="gsb" onclick='goto(`contact`)'>Contact me</button>
+            </div>
+    </section>
+
+    <section id="faq">
+        <h1 style="margin-bottom: 15px;">Still unsure?</h1>
+
+        <div class="faq-container">
+            <div class="faq-questions">
+                <h2>Questions</h2>
+                <ul>
+                    <li class="faq-question" id="question1" data-answer-id="answer1">What is Showray?</li>
+                    <li class="faq-question" id="question2" data-answer-id="answer2">Why not other websites?</li>
+                    <li class="faq-question" id="question3" data-answer-id="answer3">Is it REALLY free?</li>
+                    <li class="faq-question" id="question4" data-answer-id="answer4">Where is the code?</li>
+                </ul>
+            </div>
+
+            <div class="faq-answers">
+                <div id="answer1" class="faq-answer">
+                    <h2>What is Showray?</h2>
+                    <p>Showray is a website that lets you build music-related release pages to share with your listeners. Those pages can include various streaming services (including but not limited to Spotify, Apple Music, TIDAL and YouTube Music), custom links such as official merch websites, and more. <br><br>We let users create a website and have full access to it, being able to change anything whatsoever, and host the websites anywhere.</p>
+                </div>
+                <div id="answer2" class="faq-answer">
+                    <h2>Why not other websites?</h2>
+                    <p>Yeah, there are several alternatives, but one little catch. <b>We're free.</b> Open-source. No attribution. No limits. :)</p>
+                </div>
+                <div id="answer3" class="faq-answer">
+                    <h2>Is it REALLY free?</h2>
+                    <p><b>Yes, really.</b> You can create a music release page for absolutely free and host it anywhere. You do not need to pay us anything.<br><br><b>Want something more?</b> If you need custom features, changes and/or something else, feel free to <a onclick="goto('contact')">contact me</a> for anything special. This may come at a price. Alternatively, support me (donate) with <a href="https://ko-fi.com/sipped">Ko-Fi</a> and request a feature.</p>
+                </div>
+                <div id="answer4" class="faq-answer">
+                    <h2>Where is the code?</h2>
+                    <p><b>In the <a href="https://github.com/sippedaway/Showray">GitHub repository</a>, silly.</b> The repository includes version patch notes, full code, and the ability for anyone to post GitHub Issues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+      <h1 style="margin-bottom: 15px;">Contact me & my socials ^-^</h1>
+      <p>There are a few ways to contact me... Here's 'em all.</p>
+
+      <div class="contact-ws">
+        <div class="contact-w-i">
+          <h3>hello@sipped.org</h3>
+          <p>Personal email: feedback, questions, say hi!</p>
+          <button id="get-started-btn" onclick="window.location.href='mailto:hello@sipped.org'">Email me</button>
+        </div>
+
+        <div class="contact-w-i">
+          <h3>business@sipped.org</h3>
+          <p>Business inquiries: legal, partnership, etc.</p>
+          <button id="get-started-btn" onclick="window.location.href='mailto:business@sipped.org'">Email me</button>
+        </div>
+
+        <div class="contact-w-i">
+          <h3>discord/@sippedaway</h3>
+          <p>Leave a DM on Discord</p>
+          <button id="get-started-btn" onclick="window.location.href='https://discord.com/users/1270801870163546194'">Visit my profile</button>
+        </div>
+
+        <div class="contact-w-i">
+          <h3>github.com/sippedaway</h3>
+          <p>My projects, repositories and more</p>
+          <button id="get-started-btn" onclick="window.location.href='https://github.com/sippedaway'">Visit my profile</button>
+        </div>
+
+        <div class="contact-w-i">
+          <h3>sipped.org</h3>
+          <p>My very unique and interactive personal website</p>
+          <button id="get-started-btn" onclick="window.location.href='https://sipped.org'">Go!</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="p-footer">
+        <div class="footer-column">
+            <div class="footer-title">Showray</div>
+            <ul class="footer-links">
+                <li><a onclick="goto('edit')" class="footer-button">Create a page</a></li>
+                <li><a onclick="goto('pricing')" class="footer-button">Pricing</a></li>
+                <li><a onclick="goto('faq')" class="footer-button">FAQ</a></li>
+                <li><a onclick="goto('contact')" class="footer-button">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <div class="footer-title">More projects by me</div>
+            <ul class="footer-links">
+                <li><a href="https://sipped.org" class="footer-button">sipped.org</a></li>
+                <li><a href="https://db.sipped.org" class="footer-button">SpotDB</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <div class="footer-title">Made by sipped!</div>
+            <ul class="footer-links">
+                <li><a href="https://github.com/sippedaway/Showray" class="footer-button">GitHub repository</a></li>
+                <li><a href="https://github.com/sippedaway" class="footer-button">My GitHub</a></li>
+                <li><a href="https://ko-fi.com/sipped" class="footer-button inv"><i style="margin-right: 5px;" class="fas fa-dollar-sign"></i>Support me with Ko-Fi (donations)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
